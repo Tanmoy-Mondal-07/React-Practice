@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
   return (
@@ -20,6 +22,14 @@ export default function Navbar(props) {
         <li className="nav-item dropdown">
         </li>
       </ul>
+      {/* <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
+      </form> */}
+      <div className={props.mad}>
+  <input className="form-check-input" type="checkbox" onClick={props.togglemode} role="switch" id="flexSwitchCheckDefault"/>
+  <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{props.mod}</label>
+</div>
     </div>
   </div>
 </nav>
