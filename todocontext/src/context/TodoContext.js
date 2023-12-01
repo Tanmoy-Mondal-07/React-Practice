@@ -8,7 +8,11 @@ todos:[
         todo: "todo msg",
         completed: false,
     },
-]
+],
+addtodo: (todo)=>{},
+updatedtodo:(id, todo)=>{},
+deletetodo:(id)=>{},
+togglecomplete:(id)=>{}
 
 })
 
