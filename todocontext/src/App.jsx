@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -20,8 +20,20 @@ settodos((pr)=> pr.filter((todo)=>todo.id !== id))
   }
 
 const togglecomplete=(id)=>{
-  
+  settodos((pr)=>pr.map((pt)=> pt === id ?{...pt,completed:!pt.completed}:pt))
 }
+
+useEffect(()=>{
+  const todos = JSON.parse(localStorage.getItem("todos"))
+
+  if (todos && todos.length >0){
+settodos(todos)
+  }
+},[])
+
+useEffect(()=>{
+  localStorage.setItem("todos", JSON.stringify(todos))
+},[todos])
 
   return (
     <Todoprovider value={{todos, addtodo, updatedtodo, deletetodo,togglecomplete}}>
