@@ -1,0 +1,10 @@
+{
+	"useState": {
+		"scope": "javascript,typescript",
+		"prefix": "useState",
+		"body": [
+			"const [${1:text}, set${1:text}] = useState ('');",
+		],
+		"description": "usestate"
+	}
+}
