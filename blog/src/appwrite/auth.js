@@ -25,21 +25,21 @@ return userAccount;
             }
 
         } catch (error) {
-            throw error001;
+            throw error;
         }
     }
     async login({email,password}){
         try {
             return await this.account.createEmailSession(email,password);
         } catch (error) {
-         throw error002;   
+         throw error;   
         }
     }
     async getCurrentUser(){
         try {
            return await this.account.get(); 
         } catch (error) {
-            throw error003;
+            throw error;
         }
         return null;
     }
@@ -48,7 +48,7 @@ return userAccount;
 try {
     await this.account.deleteSessions();
 } catch (error) {
-    return error003
+    return error;
 }
         
     }
