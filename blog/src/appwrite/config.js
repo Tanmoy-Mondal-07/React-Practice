@@ -50,12 +50,12 @@ export class Service {
             throw error;
         }
     }
-    async deletePost(slug){
+    async deletePost(slug) {
         try {
             return await this.databases.deleteDocument(
                 conf.appwriteDatabaseid,
                 conf.appwriteCollection,
-                slug,  
+                slug,
             )
             return true;
         } catch (error) {
@@ -64,58 +64,58 @@ export class Service {
         }
     }
 
-    async getPost(slug){
+    async getPost(slug) {
         try {
             return await this.databases.getDocument(
                 conf.appwriteDatabaseid,
                 conf.appwriteCollection,
                 slug
-                )
+            )
         } catch (error) {
             throw error;
             return false;
         }
     }
-    async getPosts(queries=[Query.equal("status","active")]){
-try {
-    return await this.databases.listDocuments(
-        conf.appwriteDatabaseid,
-        conf.appwriteCollection,
-        queries,
-        //u can also add pagination
-    )
-} catch (error) {
-    throw error;
-    return false
-}
+    async getPosts(queries = [Query.equal("status", "active")]) {
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseid,
+                conf.appwriteCollection,
+                queries,
+                //u can also add pagination
+            )
+        } catch (error) {
+            throw error;
+            return false
+        }
     }
     //file upload
 
-    async uploadFile(file){
-try {
-    return await this.bucket.createFile(
-        conf.appwriteBucket,
-        ID.unique(),
-        file,
-    )
-} catch (error) {
-    throw error;
-    return false;
-}
+    async uploadFile(file) {
+        try {
+            return await this.bucket.createFile(
+                conf.appwriteBucket,
+                ID.unique(),
+                file,
+            )
+        } catch (error) {
+            throw error;
+            return false;
+        }
     }
-    async deleteFile(fileId){
-try {
-    await this.bucket.deleteFile(
-        conf.appwriteBucket,
-        fileId,
-    )
-    return true
-} catch (error) {
-    throw error;
-    return false;
-}
+    async deleteFile(fileId) {
+        try {
+            await this.bucket.deleteFile(
+                conf.appwriteBucket,
+                fileId,
+            )
+            return true
+        } catch (error) {
+            throw error;
+            return false;
+        }
     }
-    getFilePreview(fileId){
+    getFilePreview(fileId) {
         return this.bucket.getFilePreview(
             conf.appwriteBucket,
             fileId,
