@@ -3,6 +3,7 @@ import './App.css'
 import useHabitstore from './store/store'
 import { Box, Container, Typography } from '@mui/material';
 import Form from './components/Form';
+import HabitList from './components/HabitList';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           Habit Traker
         </Typography>
         <Form/>
+        <HabitList/>
       </Box>
     </Container>
   )
