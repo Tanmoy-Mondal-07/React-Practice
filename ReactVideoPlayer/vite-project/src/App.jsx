@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <video src='https://youtu.be/8kfP22meDL0?si=Mb68ZzJui4rCO9Nn' />
+      <video style={{height:"250px"}} src='https://ik.imagekit.io/kduhx1jnl/yt/278750_medium.mp4?updatedAt=1751291850371' />
     </>
   )
 }
