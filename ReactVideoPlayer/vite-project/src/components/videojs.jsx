@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 function Videojs() {
-  return (
-    <div>Videojs</div>
-  )
+    const playerRef = useRef(null)
+    const videoRef = useRef(null)
+    return (
+        <div>
+            <div ref={ videoRef } />
+        </div>
+    )
 }
 
 export default Videojs
