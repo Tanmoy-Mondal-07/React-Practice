@@ -1,10 +1,13 @@
 import './App.css'
+import Videojs from './components/videojs'
 
 function App() {
   
   return (
     <>
-      <video src='https://ik.imagekit.io/kduhx1jnl/yt/278750_medium.mp4?updatedAt=1751291850371?tr=h-250'
+  <Videojs/>
+
+      {/* <video src='https://ik.imagekit.io/kduhx1jnl/yt/278750_medium.mp4?updatedAt=1751291850371?tr=h-250'
         height="250px"
         controls
         // autoPlay
@@ -14,7 +17,7 @@ function App() {
       >
         <track kind='subtitles' src='/english.vtt' srcLang='en' label='English' default />
         <track kind='subtitles' src='/hindi.vtt' srcLang='hi' label='Hindi' />
-      </video>
+      </video> */}
     </>
   )
 }
