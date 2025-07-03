@@ -67,7 +67,7 @@ const VideoJSPlayer = () => {
 
     return (
         <div style={{ margin: "20px 0" }}>
-            {/* <h2>Video.js Player with Quality Selection</h2> */}
+            <h2>Video.js Player with Quality Selection</h2>
 
             <div style={{ maxWidth: "800px" }}>
                 <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
