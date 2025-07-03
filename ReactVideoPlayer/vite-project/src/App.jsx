@@ -2,10 +2,10 @@ import './App.css'
 import Videojs from './components/videojs'
 
 function App() {
-  
+
   return (
     <>
-  <Videojs/>
+      <Videojs />
 
       {/* <video src='https://ik.imagekit.io/kduhx1jnl/yt/278750_medium.mp4?updatedAt=1751291850371?tr=h-250'
         height="250px"
