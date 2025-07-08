@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Note({ content, ...props }) {
+function Note({ content, initialPos, ...props }) {
   return (
     <div
       style={{
         position: 'absolute',
-        left: 0,
-        top: 0,
+        left: `${initialPos?.x}px`,
+        top: `${initialPos?.y}px`,
         border: '1px solid black',
         userSelect: 'none',
         padding: '10px',
