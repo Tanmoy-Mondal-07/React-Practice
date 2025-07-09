@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { createRef, useEffect } from 'react'
 import Note from './Note'
 
 function Notes({ notes = [], setnotes = () => { } }) {
@@ -19,6 +19,8 @@ function Notes({ notes = [], setnotes = () => { } }) {
         localStorage.setItem("notes", JSON.stringify(updatedNotes))
     }, [notes.length])
 
+    const noteRefs = useRef([])
+
     const determineNewPosition = () => {
         const maxX = window.innerWidth - 250
         const maxY = window.innerHeight - 250
@@ -35,6 +37,10 @@ function Notes({ notes = [], setnotes = () => { } }) {
                     key={note.id}
                     content={note.text}
                     initialPos={note.position}
+                    ref={noteRefs.current[note.id]
+                        ? noteRefs.current[note.id]
+                        : (noteRefs.current[note.id] = createRef())}
+                    onMouseDown={(e) => handleDragStart(note.id, e)}
                 />
             })}
         </div>
