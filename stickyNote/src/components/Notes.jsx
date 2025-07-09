@@ -1,4 +1,4 @@
-import React, { createRef, useEffect } from 'react'
+import React, { createRef, useEffect, useRef } from 'react'
 import Note from './Note'
 
 function Notes({ notes = [], setnotes = () => { } }) {
@@ -28,6 +28,14 @@ function Notes({ notes = [], setnotes = () => { } }) {
             x: Math.floor(Math.random() * maxX),
             y: Math.floor(Math.random() * maxY)
         }
+    }
+
+    const handleDragStart = (id, e) => {
+        const noteRef = noteRefs.current[id].current;
+        const rect = noteRef.getBoundingClientRect()
+        const offsetX = e.clientX - 
+
+        console.log(rect);
     }
 
     return (
