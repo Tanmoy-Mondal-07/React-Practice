@@ -30,10 +30,13 @@ function Notes({ notes = [], setnotes = () => { } }) {
         }
     }
 
-    const handleDragStart = (id, e) => {
-        const noteRef = noteRefs.current[id].current;
+    const handleDragStart = (note, e) => {
+        const noteRef = noteRefs.current[note.id].current;
         const rect = noteRef.getBoundingClientRect()
-        const offsetX = e.clientX - 
+        const offsetX = e.clientX - rect.left
+        const offsetY = e.clientY - rect.top
+
+        const startPos = note
 
         console.log(rect);
     }
@@ -48,7 +51,7 @@ function Notes({ notes = [], setnotes = () => { } }) {
                     ref={noteRefs.current[note.id]
                         ? noteRefs.current[note.id]
                         : (noteRefs.current[note.id] = createRef())}
-                    onMouseDown={(e) => handleDragStart(note.id, e)}
+                    onMouseDown={(e) => handleDragStart(note, e)}
                 />
             })}
         </div>
