@@ -36,7 +36,25 @@ function Notes({ notes = [], setnotes = () => { } }) {
         const offsetX = e.clientX - rect.left
         const offsetY = e.clientY - rect.top
 
-        const startPos = note
+        const startPos = note;
+
+        const handleMouseMove = () => {
+            const newX = e.clientX - offsetX;
+            const newY = e.clientY - offsetY;
+
+            noteRef.style.left = `${newX}px`;
+            noteRef.style.top = `${newY}px`;
+        }
+
+        const handleMouseUp = () => {
+            document.removeEventListener("mousemove", handleMouseMove)
+            document.removeEventListener("mouseup", handleMouseUp)
+
+            
+        }
+
+        document.addEventListener("mousemove", handleMouseMove)
+        document.addEventListener("mouseup", handleMouseUp)
 
         console.log(rect);
     }
