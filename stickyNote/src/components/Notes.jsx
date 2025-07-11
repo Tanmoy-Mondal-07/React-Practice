@@ -38,7 +38,7 @@ function Notes({ notes = [], setnotes = () => { } }) {
 
         const startPos = note;
 
-        const handleMouseMove = () => {
+        const handleMouseMove = (e) => {
             const newX = e.clientX - offsetX;
             const newY = e.clientY - offsetY;
 
@@ -50,13 +50,26 @@ function Notes({ notes = [], setnotes = () => { } }) {
             document.removeEventListener("mousemove", handleMouseMove)
             document.removeEventListener("mouseup", handleMouseUp)
 
-            
+            const finalRect = noteRef.getBoundingClientRect()
+            const newPosition = { x: finalRect.left, y: finalRect.top }
+
+            if (false) {
+
+            } else {
+                updatedNotePosition(id, newPosition)
+            }
         }
 
         document.addEventListener("mousemove", handleMouseMove)
         document.addEventListener("mouseup", handleMouseUp)
 
         console.log(rect);
+    }
+
+    const updatedNotePosition = (id, newPosition) => {
+        const updatedNotes = notes.map(note => note.id === id ? { ...note, position: newPosition } : note)
+        setnotes(updatedNotes)
+        localStorage.setItem("notes", JSON.stringify(updatedNotes))
     }
 
     return (
