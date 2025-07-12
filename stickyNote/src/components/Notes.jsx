@@ -53,7 +53,7 @@ function Notes({ notes = [], setnotes = () => { } }) {
             const finalRect = noteRef.getBoundingClientRect()
             const newPosition = { x: finalRect.left, y: finalRect.top }
 
-            if (false) {
+            if (!checkForOverlap(id)) {
 
             } else {
                 updatedNotePosition(id, newPosition)
@@ -66,8 +66,24 @@ function Notes({ notes = [], setnotes = () => { } }) {
         console.log(rect);
     }
 
-    const checkForOverlap = () => {
+    const checkForOverlap = (id) => {
+        const currentNoteRef = noteRefs.current[id].current;
+        const currentRect = currentNoteRef.getBoundingClientRect();
 
+        return notes.some((note) => {
+            if (note.id === id) return false
+
+            const otherNoteRef = noteRefs.current[note.id].current;
+            const otherRect = otherNoteRef.getBoundingClientRect();
+
+            const overlap = !(
+                currentRect.right < otherRect.left || 
+                currentRect.left > otherRect.right ||
+                currentRect.bottom< otherRect.top ||
+                currentRect.top > otherRect.bottom
+            )
+            return overlap
+        })
     }
 
     const updatedNotePosition = (id, newPosition) => {
