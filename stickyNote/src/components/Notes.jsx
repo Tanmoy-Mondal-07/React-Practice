@@ -66,6 +66,10 @@ function Notes({ notes = [], setnotes = () => { } }) {
         console.log(rect);
     }
 
+    const checkForOverlap = () => {
+
+    }
+
     const updatedNotePosition = (id, newPosition) => {
         const updatedNotes = notes.map(note => note.id === id ? { ...note, position: newPosition } : note)
         setnotes(updatedNotes)
