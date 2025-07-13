@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import Notes from './components/Notes'
+import AddNote from './components/AddNote'
 
 function App() {
   const [notes, setnotes] = useState([
@@ -15,7 +16,18 @@ function App() {
   ])
   return (
     <div>
-      <Notes notes={notes} setnotes={setnotes}/>
+      <div
+        style={{
+          position: 'fixed',
+          top: '40%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 999,
+        }}
+      >
+        <AddNote />
+      </div>
+      <Notes notes={notes} setnotes={setnotes} />
     </div>
   )
 }
