@@ -46,7 +46,7 @@ function Notes({ notes = [], setnotes = () => { } }) {
             noteRef.style.top = `${newY}px`;
         }
 
-        const handleMouseUp = () => {
+        const handleMouseUp = (id) => {
             document.removeEventListener("mousemove", handleMouseMove)
             document.removeEventListener("mouseup", handleMouseUp)
 

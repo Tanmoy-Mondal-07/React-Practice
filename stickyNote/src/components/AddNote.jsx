@@ -1,6 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function AddNote() {
+function AddNote({ updateed }) {
+    const [updateTime, setupdateTime] = updateed
+    const [text, setText] = useState("")
+
+    const existingNote = JSON.parse(localStorage.getItem("notes")) || []
+
+    const determineNewPosition = () => {
+        const maxX = window.innerWidth - 250
+        const maxY = window.innerHeight - 250
+        return {
+            x: Math.floor(Math.random() * maxX),
+            y: Math.floor(Math.random() * maxY)
+        }
+    }
+
+    function updateNote() {
+        const newNote = {
+            id: Date.now(),
+            text: text,
+            position: determineNewPosition(),
+        }
+        try {
+            setupdateTime([...existingNote, newNote]);
+            localStorage.setItem("notes", JSON.stringify([...existingNote, newNote]))
+            setText("")
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <div
             style={{
@@ -20,6 +48,8 @@ function AddNote() {
         >
             <input
                 placeholder="Enter note..."
+                value={text}
+                onChange={(e) => setText(e.target.value)}
                 style={{
                     flex: 1,
                     padding: '8px 12px',
@@ -32,6 +62,7 @@ function AddNote() {
                 }}
             />
             <button
+                onClick={updateNote}
                 style={{
                     padding: '8px 12px',
                     borderRadius: '8px',
