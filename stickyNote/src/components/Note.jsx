@@ -10,22 +10,39 @@ const Note = forwardRef(({ content, initialPos, ...props }, ref) => {
         top: `${initialPos?.y}px`,
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        background: 'rgba(255, 255, 255, 0.1)',
-        border: '1px solid rgba(255, 255, 255, 0.3)',
-        borderRadius: '16px',
-        boxShadow: '0 8px 32px rgba(255, 255, 255, 0.2)',
+        background: 'rgba(255, 255, 255, 0.15)',
+        border: '1px solid rgba(255, 255, 255, 0.2)',
+        borderRadius: '5px',
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)',
         userSelect: 'none',
-        padding: '16px',
-        width: '240px',
+        padding: '18px 20px',
+        width: '260px',
         cursor: 'move',
-        color: 'lightgray',
+        color: '#f0f0f0',
         fontWeight: '500',
-        fontFamily: 'sans-serif',
-        // transition: 'all 0.1s ease-in-out',
+        fontFamily: 'Segoe UI, sans-serif',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: '8px',
       }}
       {...props}
     >
-      <span>✏️</span> {content}
+      <span style={{ flex: 1, wordBreak: 'break-word' }}>✏️ {content}</span>
+      <button
+        style={{
+          top: '5px',
+          right: '2px',
+          position: 'fixed',
+          background: 'transparent',
+          border: 'none',
+          color: '#ff5f5f',
+          fontSize: '18px',
+          cursor: 'pointer',
+        }}
+      >
+        ❌
+      </button>
     </div>
   )
 })
