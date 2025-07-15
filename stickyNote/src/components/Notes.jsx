@@ -1,7 +1,7 @@
 import React, { createRef, useEffect, useRef } from 'react'
 import Note from './Note'
 
-function Notes({ notes = [], setnotes = () => { } }) {
+function Notes({ updateed, notes = [], setnotes = () => { } }) {
 
     useEffect(() => {
         const savedNotes = JSON.parse(localStorage.getItem("notes")) || [];
@@ -98,12 +98,14 @@ function Notes({ notes = [], setnotes = () => { } }) {
             {notes.map((note) => {
                 return <Note
                     key={note.id}
+                    noteId={note.id}
                     content={note.text}
                     initialPos={note.position}
                     ref={noteRefs.current[note.id]
                         ? noteRefs.current[note.id]
                         : (noteRefs.current[note.id] = createRef())}
                     onMouseDown={(e) => handleDragStart(note, e)}
+                    updateed={updateed}
                 />
             })}
         </div>

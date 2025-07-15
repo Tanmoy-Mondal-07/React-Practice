@@ -1,6 +1,15 @@
 import React, { forwardRef } from 'react'
 
-const Note = forwardRef(({ content, initialPos, ...props }, ref) => {
+const Note = forwardRef(({ content, initialPos, noteId,updateed, ...props }, ref) => {
+  const [updateTime, setupdateTime] = updateed
+
+  function dleteNote() {
+    const existingNote = JSON.parse(localStorage.getItem("notes"))
+    const updatedNotes = existingNote.filter((e) => { e.id != noteId })
+    localStorage.setItem("notes", JSON.stringify(updatedNotes))
+    setupdateTime(updatedNotes)
+  }
+
   return (
     <div
       ref={ref}
@@ -30,6 +39,7 @@ const Note = forwardRef(({ content, initialPos, ...props }, ref) => {
     >
       <span style={{ flex: 1, wordBreak: 'break-word' }}>✏️ {content}</span>
       <button
+        onClick={dleteNote}
         style={{
           top: '5px',
           right: '2px',

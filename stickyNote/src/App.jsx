@@ -24,7 +24,7 @@ function App() {
       >
         <AddNote updateed={[updateTime, setupdateTime]} />
       </div>
-      <Notes notes={notes} setnotes={setnotes} />
+      <Notes updateed={[updateTime, setupdateTime]} notes={notes} setnotes={setnotes} />
     </div>
   )
 }
