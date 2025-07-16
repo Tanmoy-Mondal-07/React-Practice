@@ -5,7 +5,7 @@ const Note = forwardRef(({ content, initialPos, noteId,updateed, ...props }, ref
 
   function dleteNote() {
     const existingNote = JSON.parse(localStorage.getItem("notes"))
-    const updatedNotes = existingNote.filter((e) => { e.id != noteId })
+    const updatedNotes = existingNote.filter((e) =>  e.id != noteId )
     localStorage.setItem("notes", JSON.stringify(updatedNotes))
     setupdateTime(updatedNotes)
   }

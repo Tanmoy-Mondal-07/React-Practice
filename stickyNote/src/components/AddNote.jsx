@@ -36,7 +36,7 @@ function AddNote({ updateed }) {
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
-                borderRadius: '12px',
+                borderRadius: '5px',
                 padding: '12px',
                 display: 'flex',
                 gap: '8px',
@@ -53,7 +53,7 @@ function AddNote({ updateed }) {
                 style={{
                     flex: 1,
                     padding: '8px 12px',
-                    borderRadius: '8px',
+                    borderRadius: '5px',
                     border: '1px solid rgba(255,255,255,0.2)',
                     background: 'rgba(255,255,255,0.15)',
                     color: '#fff',
@@ -65,7 +65,7 @@ function AddNote({ updateed }) {
                 onClick={updateNote}
                 style={{
                     padding: '8px 12px',
-                    borderRadius: '8px',
+                    borderRadius: '5px',
                     border: 'none',
                     background: 'rgba(255,255,255,0.5)',
                     color: '#fff',
