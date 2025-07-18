@@ -4,6 +4,7 @@ const fetchPosts = async (page) => {
         }`
     );
 
+    
     if (!response.ok) {
         throw new Error(`Failed to fetch posts. Status: ${response.status}`);
     }
