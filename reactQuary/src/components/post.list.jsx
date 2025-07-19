@@ -15,7 +15,7 @@ const PostList = () => {
 
             {postData.map((post)=>{
                 return(<div>
-                    
+                    a
                 </div>)
             })}
         </div>
