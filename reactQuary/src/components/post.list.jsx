@@ -3,7 +3,7 @@ import React from 'react'
 import { fetchPosts } from '../api/api'
 
 const PostList = () => {
-    const { data:postData, isError, isLoading, error } = useQuery({
+    const { data: postData, isError, isLoading, error } = useQuery({
         queryKey: ["posts"],
         queryFn: fetchPosts,
 
@@ -13,9 +13,12 @@ const PostList = () => {
             {isLoading && <P>loading...</P>}
             {isError && <p>{error?.message}</p>}
 
-            {postData.map((post)=>{
-                return(<div>
-                    a
+            {postData.map((post) => {
+                return (<div key={post.id} className='post'>
+                    <div>{post.title}</div>
+                    {post.tags.map((tag) => {
+                        return <span key={tag}>{tag}</span>;
+                    })}
                 </div>)
             })}
         </div>
