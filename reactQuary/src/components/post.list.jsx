@@ -10,10 +10,10 @@ const PostList = () => {
     })
     return (
         <div className='container'>
-            {isLoading && <P>loading...</P>}
+            {isLoading && <p>loading...</p>}
             {isError && <p>{error?.message}</p>}
 
-            {postData.map((post) => {
+            {postData?.map((post) => {
                 return (<div key={post.id} className='post'>
                     <div>{post.title}</div>
                     {post.tags.map((tag) => {
