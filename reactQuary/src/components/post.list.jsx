@@ -17,6 +17,7 @@ const PostList = () => {
                 return (<div key={post.id} className='post'>
                     <div>{post.title}</div>
                     {post.tags.map((tag) => {
+                        
                         return <span key={tag}>{tag}</span>;
                     })}
                 </div>)
