@@ -1,11 +1,16 @@
 import { useMutation, useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { addPost, fetchPosts } from '../api/api'
+import { addPost, fetchPosts, fetchTags } from '../api/api'
 
 const PostList = () => {
     const { data: postData, isError, isLoading, error } = useQuery({
         queryKey: ["posts"],
         queryFn: fetchPosts,
+    })
+
+    const{data:tagsData,}=useQuery({
+        queryKey:['tags'],
+        queryFn:fetchTags,
     })
 
     const { mutate, isError: isPostError, isPending, error: postError, reset } = useMutation({
@@ -14,7 +19,7 @@ const PostList = () => {
 
     return (
         <div className='container'>
-            
+
             <form onSubmit={handleSubmit}>
                 {isPostError && <h5 onClick={() => reset()}>Unable to Post</h5>}
                 <input
