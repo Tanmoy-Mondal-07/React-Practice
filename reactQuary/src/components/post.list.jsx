@@ -8,14 +8,29 @@ const PostList = () => {
         queryFn: fetchPosts,
     })
 
-    const{data:tagsData,}=useQuery({
-        queryKey:['tags'],
-        queryFn:fetchTags,
+    const { data: tagsData, } = useQuery({
+        queryKey: ['tags'],
+        queryFn: fetchTags,
     })
 
     const { mutate, isError: isPostError, isPending, error: postError, reset } = useMutation({
         mutationFn: addPost,
     })
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const title = formData.get("title")
+        const tags = Array.from(formData.keys()).filter(
+            (key) => formData.get(key) === "on"
+        );
+
+        if (!title || !tags) return;
+
+        mutate({ id: postData?.items + 1, title, tags });
+
+        e.target.reset();
+    }
 
     return (
         <div className='container'>
