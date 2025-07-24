@@ -17,12 +17,12 @@ const PostList = () => {
 
     const { mutate, isError: isPostError, isPending, error: postError, reset } = useMutation({
         mutationFn: addPost,
-        onMutate:()=>{
+        onMutate: () => {
 
         },
         onSuccess: (data, variables, context) => {
             queryClient.invalidateQueries({
-                queryKey:["posts"]
+                queryKey: ["posts"]
             })
         }
     })
