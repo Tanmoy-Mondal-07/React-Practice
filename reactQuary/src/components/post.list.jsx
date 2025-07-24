@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
 import { addPost, fetchPosts, fetchTags } from '../api/api'
 
@@ -13,8 +13,18 @@ const PostList = () => {
         queryFn: fetchTags,
     })
 
+    const queryClient = useQueryClient
+
     const { mutate, isError: isPostError, isPending, error: postError, reset } = useMutation({
         mutationFn: addPost,
+        onMutate:()=>{
+
+        },
+        onSuccess: (data, variables, context) => {
+            queryClient.invalidateQueries({
+                queryKey:["posts"]
+            })
+        }
     })
 
     const handleSubmit = (e) => {
