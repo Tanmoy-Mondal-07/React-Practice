@@ -1,16 +1,22 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import React from 'react'
+import React, { useState } from 'react'
 import { addPost, fetchPosts, fetchTags } from '../api/api'
 
 const PostList = () => {
+
+    const [page, setpage] = useState(1)
+
     const { data: postData, isError, isLoading, error } = useQuery({
-        queryKey: ["posts"],
-        queryFn: fetchPosts,
+        queryKey: ["posts",{page}],
+        queryFn: () => fetchPosts(page),
+        gcTime: 0,
+        // refetchInterval: 1000 * 60
     })
 
     const { data: tagsData, } = useQuery({
         queryKey: ['tags'],
         queryFn: fetchTags,
+        staleTime: Infinity
     })
 
     const queryClient = useQueryClient
@@ -71,6 +77,12 @@ const PostList = () => {
             {isLoading && <p>loading...</p>}
             {isError && <p>{error?.message}</p>}
             {postError && <p>unable to post</p>}
+
+            <div className='pages'>
+                <button>Previous Page</button>
+                <spsn>Current Page:{page}</spsn>
+                <button>Next Page</button>
+            </div>
 
             {postData?.map((post) => {
                 return (<div key={post.id} className='post'>
