@@ -70,6 +70,7 @@ const PostList = () => {
 
             {isLoading && <p>loading...</p>}
             {isError && <p>{error?.message}</p>}
+            {postError && <p>unable to post</p>}
 
             {postData?.map((post) => {
                 return (<div key={post.id} className='post'>
