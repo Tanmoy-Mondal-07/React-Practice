@@ -43,7 +43,7 @@ const PostList = () => {
 
         if (!title || !tags) return;
 
-        mutate({ id: postData?.items + 1, title, tags });
+        mutate({ id: postData?.data?.length + 1, title, tags });
 
         e.target.reset();
     }
@@ -84,7 +84,7 @@ const PostList = () => {
                 <button>Next Page</button>
             </div>
 
-            {postData?.map((post) => {
+            {postData?.data?.map((post) => {
                 return (<div key={post.id} className='post'>
                     <div>{post.title}</div>
                     {post.tags.map((tag) => {
