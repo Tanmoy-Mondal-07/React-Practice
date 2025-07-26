@@ -7,7 +7,7 @@ const PostList = () => {
     const [page, setpage] = useState(1)
 
     const { data: postData, isError, isLoading, error } = useQuery({
-        queryKey: ["posts",{page}],
+        queryKey: ["posts", { page }],
         queryFn: () => fetchPosts(page),
         gcTime: 0,
         // refetchInterval: 1000 * 60
