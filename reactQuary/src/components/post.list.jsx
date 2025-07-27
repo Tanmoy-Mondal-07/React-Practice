@@ -79,7 +79,7 @@ const PostList = () => {
             {postError && <p>unable to post</p>}
 
             <div className='pages'>
-                <button>Previous Page</button>
+                <button onClick={() => setpage((oldpage) => Math.max(oldpage - 1, 0))}>Previous Page</button>
                 <spsn>Current Page:{page}</spsn>
                 <button>Next Page</button>
             </div>
