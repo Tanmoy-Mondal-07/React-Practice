@@ -9,7 +9,8 @@ const PostList = () => {
     const { data: postData, isError, isLoading, error } = useQuery({
         queryKey: ["posts", { page }],
         queryFn: () => fetchPosts(page),
-        gcTime: 0,
+        staleTime: 1000 * 60 *5
+        // gcTime: 0,
         // refetchInterval: 1000 * 60
     })
 
@@ -79,9 +80,16 @@ const PostList = () => {
             {postError && <p>unable to post</p>}
 
             <div className='pages'>
-                <button onClick={() => setpage((oldpage) => Math.max(oldpage - 1, 0))}>Previous Page</button>
+                <button onClick={() => setpage((oldpage) => Math.max(oldpage - 1, 0))}
+                    disabled={!postData?.prev}
+                >Previous Page</button>
                 <spsn>Current Page:{page}</spsn>
-                <button>Next Page</button>
+                <button
+                    onClick={() => {
+                        setpage((oldpage) => oldpage - 1)
+                    }}
+                    disabled={!postData?.prev}
+                >Next Page</button>
             </div>
 
             {postData?.data?.map((post) => {
